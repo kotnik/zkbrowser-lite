@@ -14,3 +14,6 @@ class ZooKepperConnection:
 
     def raw_data(self, path):
         return zookeeper.get(self.handle, self.root + path, None)
+
+    def set(self, path, data):
+        return zookeeper.set(self.handle, self.root + path, data)

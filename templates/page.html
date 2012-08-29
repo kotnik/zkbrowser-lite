@@ -3,12 +3,15 @@ $def with (home,path,data,info,children)
 <body>
 <a href="$home/..">^</a><br>
 Path: $path <br>
-<hr>Data:<br><textarea rows="" cols="40">$data</textarea>
+<form action="/$path" method="post">
+<hr>Data:<br><textarea name="zdata" wrap="off" rows="10" cols="150">$data</textarea><br>
+<input type="submit" value="Save"> <input type="reset">
+</form>
 <hr>Children:
 <ul>
 $for c in children:
     <li><a href="$home/$c">$c</a></li>
 </ul>
-<hr>Info:<br><textarea rows="" cols="40">$info</textarea>
+<hr>Info:<br><textarea wrap="off" rows="10" cols="150">$info</textarea>
 </body>
 </html>
