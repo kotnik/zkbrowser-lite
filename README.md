@@ -9,9 +9,8 @@ Required Modules
 Installing
 ----------
     sudo easy_install web.py
-    Install zkpython from contrib folder of zookeeper distribution.
 
-or
+Install zkpython from contrib folder of zookeeper distribution. Or in Debian and derivatives:
 
     sudo aptitude install python-webpy
     sudo aptitude install python-zookeeper
