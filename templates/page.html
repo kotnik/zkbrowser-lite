@@ -1,17 +1,50 @@
 $def with (home,path,data,info,children)
-<html><head><title>node @ $path</title></head>
+<html>
+<head>
+    <title>node @ $path</title>
+    <style type="text/css">
+    .button {
+        display: block;
+        width: 115px;
+        height: 25px;
+        background: #4E9CAF;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+    }
+    .button-first {
+        float: left;
+    }
+    .button-last {
+        margin-left: 150px;
+        position: absolute;
+    }
+    .buttons {
+        display: block;
+        height: 50px;
+    }
+    </style>
+</head>
 <body>
-<a href="$home/..">^</a><br>
-Path: $path <br>
-<form action="/$path" method="post">
-<hr>Data:<br><textarea name="zdata" wrap="off" rows="10" cols="150">$data</textarea><br>
-<input type="submit" value="Save"> <input type="reset">
-</form>
-<hr>Children:
-<ul>
-$for c in children:
-    <li><a href="$home/$c">$c</a></li>
-</ul>
-<hr>Info:<br><textarea wrap="off" rows="10" cols="150">$info</textarea>
+    <div class="buttons">
+        <a class="button button-first" href="$home/..">Go up</a> <a class="button button-last" href="/">Root</a><br>
+    </div>
+    Path: $path <br>
+    <form action="/$path" method="post">
+        <hr>
+        Data:<br>
+        <textarea name="zdata" wrap="off" rows="10" cols="150">$data</textarea><br>
+        <input type="submit" value="Save"> <input type="reset">
+    </form>
+    <hr>Children:
+    <ul>
+    $for c in children:
+        <li><a href="$home/$c">$c</a></li>
+    </ul>
+    <hr>
+    Info:<br>
+    <textarea wrap="off" rows="10" cols="150">$info</textarea>
 </body>
 </html>
