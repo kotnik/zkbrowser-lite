@@ -31,11 +31,19 @@ $def with (home,path,data,info,children)
     <div class="buttons">
         <a class="button button-first" href="$home/..">Go up</a> <a class="button button-last" href="/">Root</a><br>
     </div>
-    Path: $path <br>
+    $code:
+        paths = [' ']
+        for node in path.split('/'):
+            paths.append(paths[-1] + '/' + node)
+
+    Path:
+    $for pathpart in paths[1:]:
+        / <a href="$pathpart.lstrip()">$pathpart.split('/')[-1]</a>
+    <br>
     <form action="/$path" method="post">
         <hr>
         Data:<br>
-        <textarea name="zdata" wrap="off" rows="10" cols="150">$data</textarea><br>
+        <textarea name="zdata" wrap="off" rows="15" cols="150">$data</textarea><br>
         <input type="submit" value="Save"> <input type="reset">
     </form>
     <hr>Children:
@@ -45,6 +53,6 @@ $def with (home,path,data,info,children)
     </ul>
     <hr>
     Info:<br>
-    <textarea wrap="off" rows="10" cols="150">$info</textarea>
+    <textarea wrap="off" rows="13" cols="150">$info</textarea>
 </body>
 </html>
