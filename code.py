@@ -13,6 +13,7 @@ try:
 except:
     zkc = ZooKepperConnection("127.0.0.1:2181")
 
+
 class node:
     def GET(self, url = ""):
         name = url if not url.endswith('/') else url[:-1]
@@ -30,8 +31,17 @@ class node:
     def POST(self, url = ""):
         path = url if not url.endswith('/') else url[:-1]
         post_input = web.input(_method='post')
-        zkc.set(path, post_input["zdata"])
+        if post_input.get("delete"):
+            if url:
+                try:
+                    zkc.delete(path)
+                    url = "/".join(url.split("/")[:-1])
+                except:
+                    pass
+        else:
+            zkc.set(path, post_input["zdata"])
         raise web.seeother("/%s" % url)
+
 
 if __name__ == '__main__' :
     app = web.application(urls, globals())

@@ -1,5 +1,6 @@
 import zookeeper
 
+
 class ZooKepperConnection:
     def __init__(self, host, root = "/"):
         self.handle = zookeeper.init(host)
@@ -17,3 +18,6 @@ class ZooKepperConnection:
 
     def set(self, path, data):
         return zookeeper.set(self.handle, self.root + path, data)
+
+    def delete(self, path):
+        return zookeeper.delete(self.handle, self.root + path)
