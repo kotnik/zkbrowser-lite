@@ -3,15 +3,15 @@ import os
 import web
 import json
 
-from zk import ZooKepperConnection
+from zk import ZooKeeperConnection
 
 urls = ('/(.*)', 'node')
 render = web.template.render('templates/')
 
 try:
-    zkc = ZooKepperConnection(os.environ["ZOOKEEPER"])
+    zkc = ZooKeeperConnection(os.environ["ZOOKEEPER"])
 except:
-    zkc = ZooKepperConnection("127.0.0.1:2181")
+    zkc = ZooKeeperConnection("127.0.0.1:2181")
 
 
 class node:

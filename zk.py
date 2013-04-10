@@ -1,7 +1,7 @@
 import zookeeper
 
 
-class ZooKepperConnection:
+class ZooKeeperConnection:
     def __init__(self, host, root = "/"):
         self.handle = zookeeper.init(host)
         self.root = root
