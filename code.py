@@ -20,10 +20,15 @@ class node:
         home = web.ctx.homedomain + ('/' + name if name != "" else '')
         raw_data = zkc.raw_data(name)
         # TODO: add raw tab
-        try:
-           data = json.dumps(json.loads(raw_data[0]), indent=4)
-        except:
-           data = raw_data[0]
+        data = ""
+        if len(raw_data[0]) > 0:
+            try:
+               data = json.dumps(json.loads(raw_data[0]), indent=4)
+            except ValueError:
+                try:
+                    data = raw_data[0].decode('UTF-8')
+                except UnicodeDecodeError:
+                    data = ""
         info = json.dumps(raw_data[1], indent=4)
         children = zkc.children(name)
         return render.page(home, name, data, info, children)
